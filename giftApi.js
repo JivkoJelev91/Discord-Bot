@@ -1,5 +1,6 @@
 const axios = require('axios');
-const api = 'https://api.tenor.com/v1/search?q=excited&key=LIVDSRZULELA&limit=20&anon_id=3a76e56901d740da9e59ffb22b988242';
+const limit = 20;
+const api = `https://api.tenor.com/v1/search?q=excited&key=LIVDSRZULELA&limit=${limit}&anon_id=3a76e56901d740da9e59ffb22b988242`;
 
 module.exports = {
     async getGiftApi(receivedMessage) {
