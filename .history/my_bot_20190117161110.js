@@ -1,9 +1,10 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const fs = require('fs');
+const path = require('path');
 const commands = require('./processCommand');
 const userstats = require('./userstats');
 const renderGif = require('./giftApi');
-const fs = require('fs');
 
 var userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'));
 
