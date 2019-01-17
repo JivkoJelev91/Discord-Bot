@@ -5,7 +5,6 @@ const path = require('path');
 const commands = require('./processCommand');
 const userstats = require('./userstats');
 const axios = require('axios');
-const api = 'https://api.tenor.com/v1/search?q=excited&key=LIVDSRZULELA&limit=8&anon_id=3a76e56901d740da9e59ffb22b988242';
 
 var userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'));
 
@@ -56,6 +55,7 @@ client.on('message', (receivedMessage) => {
 });
 
 async function getGiftApi (receivedMessage){
+    const api = 'https://api.tenor.com/v1/search?q=excited&key=LIVDSRZULELA&limit=8&anon_id=3a76e56901d740da9e59ffb22b988242';
     let array = [];
     await axios.get(api)
           .then((response) => {
@@ -72,7 +72,8 @@ async function getGiftApi (receivedMessage){
 
 function showGif(receivedMessage, array){
     var randomValue = array[Math.floor(array.length * Math.random())];
-    receivedMessage.channel.send(randomValue);
+    console.log(randomValue);
+    // receivedMessage.channel.send(randomValue);
 }
 
 

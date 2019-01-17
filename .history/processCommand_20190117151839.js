@@ -31,7 +31,8 @@ module.exports = {
         } else if (primaryCommand == 'multiply') {
             multiplyCommand(arguments, receivedMessage);
         } else if (primaryCommand == 'ping') {
-            receivedMessage.reply('Pong!')
+            receivedMessage.channel.send('Pong!')
+
         }else {
             receivedMessage.channel.send('Unknown command. Try `!help` or `!multiply`')
         }

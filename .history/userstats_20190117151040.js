@@ -8,7 +8,7 @@ module.exports = {
         userData[sender.id].messagesSent++;
     
         if(receivedMessage.content == prefix + 'userstats'){
-            await receivedMessage.react('😎');
+            await receivedMessage.react(':atom');
             await receivedMessage.channel.send('You have sent **' + userData[sender.id].messagesSent + '** messages!');
         }
     

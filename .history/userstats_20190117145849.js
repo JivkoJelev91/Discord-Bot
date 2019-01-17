@@ -16,7 +16,7 @@ module.exports = {
             if (err) console.error(err);
             console.log("The file was saved!");
         });
-        
+    
         return userData;
     }
 }
