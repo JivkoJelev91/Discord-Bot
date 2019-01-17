@@ -22,4 +22,5 @@ module.exports = {
 function showGif(receivedMessage, array) {
     var randomValue = array[Math.floor(array.length * Math.random())];
     receivedMessage.channel.send(randomValue);
+    console.log(randomValue);
 }

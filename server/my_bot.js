@@ -20,10 +20,13 @@ client.on('ready', () => {
             console.log(` - ${channel.name} ${channel.type} ${channel.id}`);
         })
     })
+
+
 })
 
 client.on('message', (receivedMessage) => {
     var sender = receivedMessage.author;
+    userstats.countMessages(userData ,sender);
 
     if (receivedMessage.author == client.user) {
         return;
@@ -32,7 +35,8 @@ client.on('message', (receivedMessage) => {
         commands.processCommand(receivedMessage);
     }
     if (receivedMessage.content.startsWith('>')) {
-        userstats.countMessages(receivedMessage, userData , sender, fs);
+
+        userstats.saveMessages(receivedMessage, userData , sender, fs);
     }
     if (receivedMessage.content == 'gif') {
         renderGif.getGiftApi(receivedMessage)
