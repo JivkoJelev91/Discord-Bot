@@ -1,17 +1,17 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const commands = require('./processCommand');
-const userstats = require('./userstats');
-const renderGif = require('./giftApi');
+const commands = require('../moduls/processCommand')
+const userstats = require('../moduls/userstats');
+const renderGif = require('../moduls/giftApi');
 const fs = require('fs');
 
-var userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'));
+var userData = JSON.parse(fs.readFileSync('./Storage/userData.json', 'utf8'));
 
 client.on('ready', () => {
     console.log('Connected as ' + client.user.tag);
 
-    client.user.setActivity('Youtube', {
-        type: "WATCHING"
+    client.user.setActivity('World of Warcraft', {
+        type: "PLAYING"
     });
 
     client.guilds.forEach((guild) => {
