@@ -1,0 +1,108 @@
+const Discord = require('discord.js');
+const client = new Discord.Client();
+const fs = require('fs');
+const path = require('path');
+
+var userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'));
+
+client.on('ready', () => {
+    console.log('Connected as ' + client.user.tag);
+
+    client.user.setActivity('Youtube', {
+        type: "WATCHING"
+    });
+
+    client.guilds.forEach((guild) => {
+        console.log(guild.name);
+        guild.channels.forEach((channel) => {
+            console.log(` - ${channel.name} ${channel.type} ${channel.id}`);
+        })
+        //General channel id: 535073760731070496
+    })
+
+    let generalChannel = client.channels.get('535073760731070496');
+    // const attachment = new Discord.Attachment("https://www.devdungeon.com/sites/all/themes/devdungeon2/logo.png");
+    // generalChannel.send(attachment);
+})
+
+client.on('message', async (receivedMessage) => {
+    var prefix = '>';
+
+    if (receivedMessage.content.startsWith('!')) {
+        processCommand(receivedMessage);
+    }
+    if (receivedMessage.author == client.user) {
+        return;
+    }
+    if (receivedMessage.content === prefix + 'userstats') {
+        countMessages(receivedMessage, fs);
+    }
+        // receivedMessage.channel.send(
+    //     'Message received, ' + 
+    //     receivedMessage.author.toString() + ':'  + 
+    //     receivedMessage.content
+    // );
+    // receivedMessage.react('😎');
+    
+});
+
+// Leveling System
+async function countMessages(receivedMessage, fs){
+    var sender = receivedMessage.author;
+    if (!userData[sender.id]) {
+        userData[sender.id] = {
+            messagesSent: 0
+        }
+    }
+    userData[sender.id].messagesSent++;
+
+    await receivedMessage.channel.send('You have sent **' + userData[sender.id].messagesSent + '** messages!');
+
+    await fs.writeFile('Storage/userData.json', JSON.stringify(userData), (err) => {
+        if (err) console.error(err);
+        console.log("The file was saved!");
+    });
+
+    // levelingSystem(receivedMessage, userData, sender);
+
+    return userData;
+}
+
+function processCommand(receivedMessage) {
+    let fullComand = receivedMessage.content.substr(1);
+    let splitCommand = fullComand.split(' ');
+    let primaryCommand = splitCommand[0];
+    let arguments = splitCommand.slice(1);
+
+    if (primaryCommand == 'help') {
+        helpCommand(arguments, receivedMessage);
+    } else if (primaryCommand == 'multiply') {
+        multiplyCommand(arguments, receivedMessage);
+    } else {
+        receivedMessage.channel.send('Unknown command. Try `!help` or `!multiply`')
+    }
+}
+
+function multiplyCommand(arguments, receivedMessage) {
+    if (arguments.length < 2) {
+        receivedMessage.channel.send('Not enough arguments. Try `!multiplu 2 10`');
+        return;
+    }
+    let product = 1;
+
+    arguments.forEach((value) => {
+        product *= parseFloat(value);
+    })
+    receivedMessage.channel.send('Калкулатор няяш ли е? Ай ко да та прая. ' + arguments + ' e ' + product.toString())
+
+}
+
+function helpCommand(arguments, receivedMessage) {
+    if (arguments.length == 0) {
+        receivedMessage.channel.send('I am not sure what you need help with. Try `!help [topic]`')
+    } else {
+        receivedMessage.channel.send('It looks like you need help with ' + arguments)
+    }
+}
+
+client.login('NTM1MDc0MTQwNDA3ODU3MTUy.DyC2MQ.qc7DeZzp8oCKNb4xIs-HkASOgm0');
