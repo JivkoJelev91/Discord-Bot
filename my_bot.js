@@ -18,10 +18,10 @@ client.on('ready', () => {
         guild.channels.forEach((channel) => {
             console.log(` - ${channel.name} ${channel.type} ${channel.id}`);
         })
-        //General channel id: 535073760731070496
+        //General channel id Еxample: 535073760731070491
     })
 
-    let generalChannel = client.channels.get('535073760731070496');
+    let generalChannel = client.channels.get('535073760731070491'); // Generate your tocken!
     // const attachment = new Discord.Attachment("https://www.devdungeon.com/sites/all/themes/devdungeon2/logo.png");
     // generalChannel.send(attachment);
 })
