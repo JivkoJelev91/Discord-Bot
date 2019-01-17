@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
 const path = require('path');
+var array = [];
 
 var userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'));
 
@@ -17,39 +18,43 @@ client.on('ready', () => {
         guild.channels.forEach((channel) => {
             console.log(` - ${channel.name} ${channel.type} ${channel.id}`);
         })
-        //General channel id: 535073760731070496
+        //General channel id Еxample: 535073760731070491
     })
 
-    let generalChannel = client.channels.get('535073760731070496');
+    let generalChannel = client.channels.get('535073760731070491'); // Generate your tocken!
     // const attachment = new Discord.Attachment("https://www.devdungeon.com/sites/all/themes/devdungeon2/logo.png");
     // generalChannel.send(attachment);
 })
 
-client.on('message', async (receivedMessage) => {
+client.on('message', (receivedMessage) => {
+    var sender = receivedMessage.author;
+    var msg = receivedMessage.content
     var prefix = '>';
 
     if (receivedMessage.content.startsWith('!')) {
         processCommand(receivedMessage);
     }
-    if (receivedMessage.author == client.user) {
-        return;
-    }
-    if (receivedMessage.content === prefix + 'userstats') {
-        countMessages(receivedMessage, fs);
-    }
-        // receivedMessage.channel.send(
+    // receivedMessage.channel.send(
     //     'Message received, ' + 
     //     receivedMessage.author.toString() + ':'  + 
     //     receivedMessage.content
     // );
     // receivedMessage.react('😎');
+
+    // if (receivedMessage.author == client.user) {
+    //     return;
+    // }
     
-});
 
-// Leveling System
-async function countMessages(receivedMessage, fs){
-    var sender = receivedMessage.author;
+    if (msg === prefix + 'ping') {
+        receivedMessage.channel.send('Pong')
+    }
 
+    if (msg === prefix + 'userstats') {
+        receivedMessage.channel.send('You have sent **' + userData[sender.id].messagesSent + '** messages!');
+    }
+
+    // Leveling System
     if (!userData[sender.id]) {
         userData[sender.id] = {
             messagesSent: 0
@@ -58,17 +63,18 @@ async function countMessages(receivedMessage, fs){
 
     userData[sender.id].messagesSent++;
 
-    await receivedMessage.channel.send('You have sent **' + userData[sender.id].messagesSent + '** messages!');
 
-    await fs.writeFile('Storage/userData.json', JSON.stringify(userData), (err) => {
-        if (err) console.error(err);
-        console.log("The file was saved!");
-    });
 
-    // levelingSystem(receivedMessage, userData, sender);
+    // fs.writeFile('./Storage/userData.json', JSON.stringify(userData), (err) => {
+    //     if (err) console.error(err);
+    //     console.log("The file was saved!");
+    //     fs.close('./Storage/userData.json', function() {
+    //         console.log('file written');
+    //     })
+    // });
+    console.log(receivedMessage.content);
 
-    return userData;
-}
+})
 
 function processCommand(receivedMessage) {
     let fullComand = receivedMessage.content.substr(1);
