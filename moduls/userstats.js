@@ -1,3 +1,5 @@
+const fsActions = require('../moduls/fileSystemActions');
+
 module.exports = {
     async saveMessages(receivedMessage, userData, sender, fs) {
         var prefix = '>';
@@ -6,15 +8,10 @@ module.exports = {
                 await receivedMessage.react('😎');
                 await receivedMessage.channel.send('You have sent **' + userData[sender.id].messagesSent + '** messages!');
             }
-
-            await fs.writeFile('./Storage/userData.json', JSON.stringify(userData), (err) => {
-                if (err) console.error(err);
-                console.log("The file was saved!");
-            });
+            await fsActions.writeFile(userData);
         } catch (err) {
             console.error(err);
         }
-
         return userData;
     },
 

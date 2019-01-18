@@ -4,10 +4,11 @@ const commands = require('../moduls/processCommand')
 const userstats = require('../moduls/userstats');
 const renderGif = require('../moduls/giftApi');
 const config = require('./config'); // Make your own token
+const fsActions = require('../moduls/fileSystemActions');
 const fs = require('fs');
 const date = new Date();
 
-var userData = JSON.parse(fs.readFileSync('./Storage/userData.json', 'utf8'));
+var userData = fsActions.readFile();
 
 client.on('ready', () => {
     console.log('Connected as ' + client.user.tag);
@@ -50,4 +51,4 @@ client.on('message', (receivedMessage) => {
     
 });
 
-client.login(config.token);
+client.login(config.token); // HERE COMES YOUR TOKEN
