@@ -22,17 +22,15 @@ function showCommands(receivedMessage) {
 }
 
 function timeToStartTraining(arguments, receivedMessage, date) {
-    let [trainingTime, hours, mins] = [arguments, date.getHours(), date.getMinutes()];
+    let [hours, mins] = [date.getHours(), date.getMinutes()];
 
-    if (hours >= trainingTime) {
+    if (hours >= arguments) {
         return receivedMessage.channel.send('Утре пробвай пак!');
     }
-
-    let [h, m] = [trainingTime - hours, 60 - mins];
-
     if (mins > 0) {
-        return h-- && receivedMessage.channel.send(`
-              Остават още ${h}:${m} часа време до трерорвка балъче!`);
+        let [leftHours,leftMinutes] = [arguments % hours - 1, 60 - mins];
+        let strLiteral = `Остават още ${leftHours} часа и ${leftMinutes} минути време до трерорвка балъче! \nКой си е дебел си е дебел. До ген си е!`;
+        receivedMessage.channel.send('```dif' + '\n' + strLiteral + '\n' + '```');
     }
 }
 
