@@ -5,7 +5,8 @@ I am making a Discord bot for a fun and was like, this thing might be useful to 
 
 ## Getting Started
 *  <b>Make a Discord bot following this steps here -> [click](https://github.com/reactiflux/discord-irc/wiki/Creating-a-discord-bot-&-getting-a-token)</b>
-*  <b>Download node.js if you dont have it</b>
+*  <b>Download Node.js if you dont have it</b>
+*  <b>Make sure your Node.js version is up-to-date or at least bigger than 8.0.0</b>
 *  <b>Clone this repository</b>
 *  <b>Open up your terminal in the same directory as the repository</b>
 *  <b>Open my_bot.js in server folder and put your token in the end of your file</b>
