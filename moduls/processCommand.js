@@ -15,7 +15,7 @@ function getCurrentTime(receivedMessage, date) {
 }
 
 function showCommands(receivedMessage) {
-    let commands = ['-1 !help', '-2 !training', '-3 !ping', '-4 !time', '-5 !show', '-6 <userstats', '-7 gif'];
+    let commands = ['-1 !help', '-2 !training', '-3 !ping', '-4 !time', '-5 !show', '-6 >userstats', '-7 gif'];
     receivedMessage.channel.send(
         "The all commands are:" + '\n' + '```diff' + '\n' + commands.join('\n') + '```'
     );
