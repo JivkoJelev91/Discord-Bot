@@ -3,9 +3,9 @@ const client = new Discord.Client();
 const commands = require('../moduls/processCommand')
 const userstats = require('../moduls/userstats');
 const renderGif = require('../moduls/giftApi');
+const config = require('./config'); // Make your own token
 const fs = require('fs');
 const date = new Date();
-
 
 var userData = JSON.parse(fs.readFileSync('./Storage/userData.json', 'utf8'));
 
@@ -50,5 +50,4 @@ client.on('message', (receivedMessage) => {
     
 });
 
-
-client.login('NTM1MDc0MTQwNDA3ODU3MTUy.DyC2MQ.qc7DeZzp8oCKNb4xIs-HkASOgm0');
+client.login(config.token);
