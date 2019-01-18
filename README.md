@@ -13,4 +13,4 @@ I am making a Discord bot for a fun and was like, this thing might be useful to 
 *  <b>After you are done you can read more about it on official documentation here -> https://github.com/discordapp/discord-api-docs</b>
 *  <b>Enjoy it!</b>
 
-![gifImage]('/Storage/images/discord.png')
+![gifImage](/Storage/images/discord.png?raw=true "Optional Title")
