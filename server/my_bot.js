@@ -5,7 +5,6 @@ const userstats = require('../moduls/userstats');
 const renderGif = require('../moduls/giftApi');
 const config = require('./config'); // Make your own token
 const fsActions = require('../moduls/fileSystemActions');
-const fs = require('fs');
 const date = new Date();
 
 var userData = fsActions.readFile();
@@ -36,7 +35,7 @@ client.on('message', (receivedMessage) => {
         commands.processCommand(receivedMessage, date);
     }
     if (receivedMessage.content.startsWith('>')) {
-        userstats.saveMessages(receivedMessage, userData , sender, fs);
+        userstats.saveMessages(receivedMessage, userData , sender);
     }
     if (receivedMessage.content == 'gif') {
         renderGif.getGiftApi(receivedMessage)

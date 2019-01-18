@@ -1,7 +1,7 @@
 const fsActions = require('../moduls/fileSystemActions');
 
 module.exports = {
-    async saveMessages(receivedMessage, userData, sender, fs) {
+    async saveMessages(receivedMessage, userData, sender) {
         var prefix = '>';
         try {
             if (receivedMessage.content == prefix + 'userstats') {
