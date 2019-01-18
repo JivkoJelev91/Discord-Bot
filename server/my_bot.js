@@ -4,6 +4,8 @@ const commands = require('../moduls/processCommand')
 const userstats = require('../moduls/userstats');
 const renderGif = require('../moduls/giftApi');
 const fs = require('fs');
+const date = new Date();
+
 
 var userData = JSON.parse(fs.readFileSync('./Storage/userData.json', 'utf8'));
 
@@ -30,7 +32,7 @@ client.on('message', (receivedMessage) => {
         return;
     }
     if (receivedMessage.content.startsWith('!')) {
-        commands.processCommand(receivedMessage);
+        commands.processCommand(receivedMessage, date);
     }
     if (receivedMessage.content.startsWith('>')) {
         userstats.saveMessages(receivedMessage, userData , sender, fs);
