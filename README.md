@@ -4,7 +4,7 @@
 I am making a Discord bot for a fun and was like, this thing might be useful to someone. It is open source. Hopefully you can get some use of it!
 
 ## Getting Started
-*  <b>Make a Discord bot following this steps here ->[click](https://github.com/reactiflux/discord-irc/wiki/Creating-a-discord-bot-&-getting-a-token)</b>
+*  <b>Make a Discord bot following this steps here -> [click](https://github.com/reactiflux/discord-irc/wiki/Creating-a-discord-bot-&-getting-a-token)</b>
 *  <b>Download node.js if you dont have it</b>
 *  <b>Clone this repository</b>
 *  <b>Open up your terminal in the same directory as the repository</b>
