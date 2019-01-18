@@ -3,8 +3,8 @@
 ## Why?
 I am making a Discord bot for a fun of mine and was like, you know this thing might be useful to others. It is open source. Hopefully you can get some use of it!
 
-##Getting Started
-⋅⋅1.Download node.js.
+## Getting Started
+⋅⋅1 .Download node.js.
 
 Download this repo using either git or from here.
 
