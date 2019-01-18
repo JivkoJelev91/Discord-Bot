@@ -45,7 +45,7 @@ client.on('message', (receivedMessage) => {
     // receivedMessage.channel.send(
     //     'Message received, ' + 
     //     receivedMessage.author.toString() + ':'  + 
-    //     receivedMessage.content
+    //     receivedMessage.content 
     // );
     
 });

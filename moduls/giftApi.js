@@ -1,5 +1,5 @@
 const axios = require('axios');
-const limit = 50;
+const limit = 40;
 const api = `https://api.tenor.com/v1/search?q=excited&key=LIVDSRZULELA&limit=${limit}&anon_id=3a76e56901d740da9e59ffb22b988242`;
 
 module.exports = {
