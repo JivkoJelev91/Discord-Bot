@@ -24,14 +24,13 @@ function showCommands(receivedMessage) {
 function timeToStartTraining(arguments, receivedMessage, date) {
     let [hours, mins] = [date.getHours(), date.getMinutes()];
 
-    if (hours >= arguments) {
-        return receivedMessage.channel.send('Утре пробвай пак!');
-    }
-    if (mins > 0) {
-        let [leftHours,leftMinutes] = [arguments % hours - 1, 60 - mins];
-        let strLiteral = `Остават още ${leftHours} часа и ${leftMinutes} минути време до трерорвка балъче! \nКой си е дебел си е дебел. До ген си е!`;
-        receivedMessage.channel.send('```dif' + '\n' + strLiteral + '\n' + '```');
-    }
+    if (hours >= arguments) return receivedMessage.channel.send('Утре пробвай пак!');
+    if (arguments > 24) return receivedMessage.channel.send('Ти неска тренира ли че питаш за утре?!');
+    
+    mins > 0 ? hours++ : hours = hours;
+    let [leftHours, leftMinutes] = [arguments % hours , 60 - mins];
+    let strLiteral = `Остават още ${leftHours} часа и ${leftMinutes} минути време до трерорвка балъче! \nКой си е дебел си е дебел. До ген си е!`;
+    receivedMessage.channel.send('```dif' + '\n' + strLiteral + '\n' + '```');
 }
 
 module.exports = {
