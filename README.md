@@ -8,6 +8,8 @@ I am making a Discord bot for a fun and was like, this thing might be useful to 
 *  <b>Download node.js if you dont have it</b>
 *  <b>Clone this repository</b>
 *  <b>Open up your terminal in the same directory as the repository</b>
+*  <b>Open my_bot.js in server folder and put your token</b>
+*  <b>Keep your token carefully</b>
 *  <b>npm install</b>
 *  <b>npm start</b>
 *  <b>After you are done you can read more about it on official documentation here -> https://github.com/discordapp/discord-api-docs</b>
