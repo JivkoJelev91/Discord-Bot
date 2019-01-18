@@ -9,7 +9,7 @@ I am making a Discord bot for a fun and was like, this thing might be useful to 
 *  <b>Make sure your Node.js version is up-to-date or at least bigger than 8.0.0</b>
 *  <b>Clone this repository</b>
 *  <b>Open up your terminal in the same directory as the repository</b>
-*  <b>Open my_bot.js in server folder and put your token in the end of your file</b>
+*  <b>Open my_bot.js in server folder and put your token in the end of file</b>
 *  <b>Keep your token carefully</b>
 *  <b>npm install</b>
 *  <b>npm start</b>
