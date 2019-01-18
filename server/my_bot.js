@@ -20,8 +20,6 @@ client.on('ready', () => {
             console.log(` - ${channel.name} ${channel.type} ${channel.id}`);
         })
     })
-
-
 })
 
 client.on('message', (receivedMessage) => {
@@ -35,7 +33,6 @@ client.on('message', (receivedMessage) => {
         commands.processCommand(receivedMessage);
     }
     if (receivedMessage.content.startsWith('>')) {
-
         userstats.saveMessages(receivedMessage, userData , sender, fs);
     }
     if (receivedMessage.content == 'gif') {
