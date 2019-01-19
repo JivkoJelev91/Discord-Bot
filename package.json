@@ -5,7 +5,7 @@
   "main": "my_bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "sudo nodemon ./server/my_bot.js"
+    "start": "nodemon ./server/my_bot.js"
   },
   "repository": {
     "type": "git",
