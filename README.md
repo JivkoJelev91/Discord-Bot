@@ -13,6 +13,7 @@ I am making a Discord bot for a fun and was like, this thing might be useful to 
 *  <b>Keep your token carefully</b>
 *  <b>npm install</b>
 *  <b>npm start</b>
+*  <b>Type !show in your channel and you will see all bot commands</b>
 *  <b>After you are done, you can read more about it on official documentation here -> [click](https://github.com/discordapp/discord-api-docs) </b>
 *  <b>Enjoy it!</b>
 
