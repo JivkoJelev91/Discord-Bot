@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const commands = require('../moduls/processCommand')
 const userstats = require('../moduls/userstats');
 const renderGif = require('../moduls/giftApi');
-const config = require('./config'); // Make your own token
+const config = require('./config'); // Make your own config file which will contains your token
 const fsActions = require('../moduls/fileSystemActions');
 const date = new Date();
 
@@ -50,4 +50,4 @@ client.on('message', (receivedMessage) => {
     
 });
 
-client.login(config.token); // HERE COMES YOUR TOKEN
+client.login(config.token); // Type your token from the config file
