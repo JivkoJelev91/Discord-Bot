@@ -3,8 +3,8 @@ const client = new Discord.Client();
 const commands = require('../moduls/processCommand')
 const userstats = require('../moduls/userstats');
 const renderGif = require('../moduls/giftApi');
-const config = require('./config'); // Make your own config file which will contains your token
 const fsActions = require('../moduls/fileSystemActions');
+const config = require('./config'); // Make your own config file which will contains your token
 const date = new Date();
 
 var userData = fsActions.readFile();
@@ -16,16 +16,19 @@ client.on('ready', () => {
         type: "PLAYING"
     });
 
-    client.guilds.forEach((guild) => {
-        console.log(guild.name);
-        guild.channels.forEach((channel) => {
-            console.log(` - ${channel.name} ${channel.type} ${channel.id}`);
-        })
-    })
+    // client.guilds.forEach((guild) => {
+    //     console.log(guild.name);
+    //     guild.channels.forEach((channel) => {
+    //         console.log(` - ${channel.name} ${channel.type} ${channel.id}`);
+    //     })
+    // })
 })
 
 client.on('message', (receivedMessage) => {
     var sender = receivedMessage.author;
+
+    receivedMessage.content = receivedMessage.content.toLocaleLowerCase();
+
     userstats.countMessages(userData ,sender);
 
     if (receivedMessage.author == client.user) {

@@ -1,8 +1,8 @@
-function helpCommand(arguments, receivedMessage) {
-    if (arguments.length == 0) {
+function helpCommand(args, receivedMessage) {
+    if (args.length == 0) {
         receivedMessage.channel.send('I am not sure what you need help with. Try `!show [topic]`');
     } else {
-        receivedMessage.channel.send('It looks like you need help with ' + arguments);
+        receivedMessage.channel.send('It looks like you need help with ' + args);
     }
 }
 
@@ -21,16 +21,19 @@ function showCommands(receivedMessage) {
     );
 }
 
-function timeToStartTraining(arguments, receivedMessage, date) {
-    let [hours, mins] = [date.getHours(), date.getMinutes()];
-
-    if (hours >= arguments) return receivedMessage.channel.send('Утре пробвай пак!');
-    if (arguments > 24) return receivedMessage.channel.send('Ти неска тренира ли че питаш за утре?!');
-    
-    mins > 0 ? hours++ : hours = hours;
-    let [leftHours, leftMinutes] = [arguments % hours , 60 - mins];
-    let strLiteral = `Остават още ${leftHours} часа и ${leftMinutes} минути време до трерорвка балъче! \nКой си е дебел си е дебел. До ген си е!`;
-    receivedMessage.channel.send('```dif' + '\n' + strLiteral + '\n' + '```');
+function timeToStartTraining(args, receivedMessage, date) {
+    args = args.filter(x => (/^(\d+)$/g).test(x) && x !== '').map(parseInt);
+    if(args.length !== 0){
+        let [hours, mins] = [date.getHours(), date.getMinutes()];
+        if (hours >= args) return receivedMessage.channel.send('Утре пробвай пак!');
+        if (args > 24) return receivedMessage.channel.send('Ти неска тренира ли че питаш за утре?!');
+        
+        mins > 0 ? hours++ : hours = hours;
+        let [leftHours, leftMinutes] = [args - hours , 60 - mins];
+        let strLiteral = `Остават още ${leftHours} часа и ${leftMinutes} минути време до трерорвка балъче! \nКой си е дебел си е дебел. До ген си е!`;
+        return receivedMessage.channel.send('```dif' + '\n' + strLiteral + '\n' + '```') && receivedMessage.react('👍');
+    }
+    return receivedMessage.channel.send('Въведи число е кви са тия тъпни къде ги въвеждаш ...') && receivedMessage.react('💩');
 }
 
 module.exports = {

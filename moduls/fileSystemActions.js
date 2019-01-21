@@ -8,7 +8,7 @@ module.exports = {
     writeFile(userData) {
         fs.writeFile('Storage/userData.json', JSON.stringify(userData), (err) => {
             if (err) {
-                console.error(err);
+                return console.error(err);
             }
             console.log("The file was saved!");
         });
