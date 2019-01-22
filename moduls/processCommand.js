@@ -8,7 +8,6 @@ function helpCommand(args, receivedMessage) {
 
 function getCurrentTime(receivedMessage, date) {
     receivedMessage.channel.send(
-        'Календар няяш ли е ? \nАй ко да та прая \n' +
         date.toLocaleTimeString() + '\n' +
         date.toLocaleDateString()
     );
@@ -25,13 +24,12 @@ function timeToStartTraining(args, receivedMessage, date) {
     args = args.filter(x => (/^(\d+)$/g).test(x) && x !== '').map(parseInt);
     if(args.length !== 0){
         let [hours, mins] = [date.getHours(), date.getMinutes()];
-        if (hours >= args) return receivedMessage.channel.send('Утре пробвай пак!');
-        if (args > 24) return receivedMessage.channel.send('Ти неска тренира ли че питаш за утре?!');
+        if (hours >= args || args > 24) return receivedMessage.channel.send('Tomorrow try again!!');
         let [leftHours, leftMinutes] = [(args - ++hours) , 60 - mins];
-        let strLiteral = `Остават още ${leftHours} часа и ${leftMinutes} минути време до трерорвка балъче! \nКой си е дебел си е дебел. До ген си е!`;
+        let strLiteral = `There is ${leftHours} hours and ${leftMinutes} minutes left!`;
         return receivedMessage.channel.send('```dif' + '\n' + strLiteral + '\n' + '```') && receivedMessage.react('👍');
     }
-    return receivedMessage.channel.send('Въведи число е кви са тия тъпни къде ги въвеждаш ...') && receivedMessage.react('💩');
+    return receivedMessage.channel.send('Type a number and stop writing bulshits!') && receivedMessage.react('💩');
 }
 
 module.exports = {

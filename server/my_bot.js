@@ -58,4 +58,7 @@ client.on('message', (receivedMessage) => {
     // );
 });
 
+
+
+
 client.login(config.token); // Type your token from the config file
