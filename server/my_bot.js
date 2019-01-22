@@ -5,9 +5,8 @@ const userstats = require('../moduls/userstats');
 const gifApi = require('../moduls/giftApi');
 const fsActions = require('../moduls/fileSystemActions');
 const config = require('./config'); // Make your own config file which will contains your token
-const date = new Date();
 
-var userData = fsActions.readFile();
+const userData = fsActions.readFile();
 
 client.on('ready', () => {
     console.log('Connected as ' + client.user.tag);
@@ -25,7 +24,7 @@ client.on('ready', () => {
 })
 
 client.on('message', (receivedMessage) => {
-    var sender = receivedMessage.author;
+    const sender = receivedMessage.author;
 
     receivedMessage.content = receivedMessage.content.toLocaleLowerCase();
 
@@ -35,7 +34,7 @@ client.on('message', (receivedMessage) => {
         return;
     }
     if (receivedMessage.content.startsWith('!')) {
-        commands.processCommand(receivedMessage, date);
+        commands.processCommand(receivedMessage);
     }
     if (receivedMessage.content.startsWith('>')) {
         userstats.saveMessages(receivedMessage, userData, sender);

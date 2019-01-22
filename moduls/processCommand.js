@@ -35,7 +35,8 @@ function timeToStartTraining(args, receivedMessage, date) {
 }
 
 module.exports = {
-    processCommand(receivedMessage, date) {
+    processCommand(receivedMessage) {
+        let date = new Date();
         let fullComand = receivedMessage.content.substr(1);
         let splitCommand = fullComand.split(' ');
         let primaryCommand = splitCommand[0];
