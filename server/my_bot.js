@@ -58,27 +58,4 @@ client.on('message', (receivedMessage) => {
     // );
 });
 
-// let Questions = ['Колко е 1+1?', 'Тъп ли си или да?', 'Ко пр е къде ходиш кат та няма е?', 'здркопребепце'];
-// let Answers = ['2', 'da', 'bia', 'ok'];
-// let index = 0;
-// let startGame = false;
-// var startTime = Date.now();
-// var timer  = null;
-// var interval = null;
-
-// function startTrivia(receivedMessage) {
-//     receivedMessage.channel.send(Questions[index]);
-//     startGame = true;
-// }
-
-// function bliz(receivedMessage){
-//     if(receivedMessage.content == Answers[index]){
-//         receivedMessage.channel.send(`Ti pozna za ` + timer + 'vreme')
-//         return ++index  &&  startTrivia(receivedMessage) 
-//     }else{
-//         index = 0;
-//     }
-// }
-
-
 client.login(config.token); // Type your token from the config file
