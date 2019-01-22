@@ -27,9 +27,7 @@ function timeToStartTraining(args, receivedMessage, date) {
         let [hours, mins] = [date.getHours(), date.getMinutes()];
         if (hours >= args) return receivedMessage.channel.send('Утре пробвай пак!');
         if (args > 24) return receivedMessage.channel.send('Ти неска тренира ли че питаш за утре?!');
-        
-        mins > 0 ? hours++ : hours = hours;
-        let [leftHours, leftMinutes] = [args - hours , 60 - mins];
+        let [leftHours, leftMinutes] = [(args - ++hours) , 60 - mins];
         let strLiteral = `Остават още ${leftHours} часа и ${leftMinutes} минути време до трерорвка балъче! \nКой си е дебел си е дебел. До ген си е!`;
         return receivedMessage.channel.send('```dif' + '\n' + strLiteral + '\n' + '```') && receivedMessage.react('👍');
     }
