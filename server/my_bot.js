@@ -5,7 +5,6 @@ const userstats = require('../moduls/userstats');
 const gifApi = require('../moduls/giftApi');
 const fsActions = require('../moduls/fileSystemActions');
 const config = require('./config'); // Make your own config file which will contains your token
-
 const userData = fsActions.readFile();
 
 client.on('ready', () => {
