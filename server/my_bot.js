@@ -42,13 +42,6 @@ client.on('message', (receivedMessage) => {
     if (receivedMessage.content == 'gif') {
         gifApi.getGiftApi(receivedMessage)
     }
-    // if (receivedMessage.content == 'start trivia') {
-    //     startTrivia(receivedMessage)
-    // }
-    // if(startGame && receivedMessage.content !== 'start trivia'){
-    //     bliz(receivedMessage);
-    // }
-
 
     // This functionality reply every your message
     // receivedMessage.channel.send(
@@ -57,8 +50,5 @@ client.on('message', (receivedMessage) => {
     //     receivedMessage.content 
     // );
 });
-
-
-
 
 client.login(config.token); // Type your token from the config file
